@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Learning JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- if you want to link an external javascipt file
+    <script src = "main.js"></script>
+    -->
+
+  </head>
+
+  <body id ='body'>
+
+    <div class = 'header'>
+      <h1 id = 'heading_1'>Learning Javascript</h1>
+      <p> A Basic Introduction </p>
+    </div>
+
+    <div class = 'container'>
+      <!-- empty element -->
+       <!-- <h1 id ='time'></h1> -->
+      <!-- EVENTS -->
+      <!--
+      <button onclick = 'doClick()'>CLICK ME</button>
+      -->
+
+      <!-- does not have to pretain to a personal function
+      <button onclick ="this.innerHTML = 'you clicked'">click me</button>
+      -->
+
+      <!-- a better way to do the same as above is create your own function
+      <button onclick = 'changeText(this)'>click me</button>
+      -->
+
+      <!-- say we want to change the title, first add an id to the title
+      <button onclick = 'changeTitle()'>click me2</button>
+      -->
+
+      <!-- we want to see the date after we click the button now
+      <button onclick="dateFunc()">SHOW DATE</button>
+      -->
+
+      <!-- we have other events such as the following we can do
+      <button onclick="dateFunc()">SHOW DATE</button>
+      -->
+
+      <form method = 'post' action ='something.php' name = 'myForm' onsubmit="return validateForm()">
+        <div>
+          <label>First Name </label>
+          <input type = 'text' name = 'firstName' id = 'firstName' />
+        </div>
+        <br />
+        <div>
+          <label>Last Name</label>
+          <input type = 'text' name = 'lastName' id = 'lastName' />
+        </div>
+        <br/>
+        <div>
+          <label>Background</label>
+          <select name='background' id ='background' onchange = 'changeBackground(this)'>
+            <option value = 'red'>Red</option>
+            <option value ='blue'>Blue</option>
+            <option value = 'green'>Green</option>
+          </select>
+        </div>
+        <br />
+        <input type = 'submit' value = 'Submit' />
+      </form>
+    </div>
+
+<!-- we will be using script tags -->
+    <script>
+    // Number
+
+    // to create a variable we just use the keyword var
+    // this does not have any quotes around it so looked at as a number
+    var number1 = 35;
+    var number2 = 31;
+    // alert(number1 + number2);
+
+    // String
+    // if we are to do the same thing with strings, this would concatenate
+    var number1 = '35';
+    var number2 = '31';
+    // alert('my fav number is ' + number2);
+
+
+    //naming convenctions
+    // can only contain letters, dillar signs, underscores, numbers
+    // begin with a letter (or _ or $)
+    // case sensative
+
+    // Example of initalizing a variable without a value
+    var myFavouriteNumber;
+    // ... and later we can do
+    myFavouriteNumber = 5
+
+
+
+
+
+    // Array
+
+    // variable decleration
+      var colors = ['red', 'blue', 'green'];
+      // alternate decloration
+      // var colors = new Array('red', 'yellow', 'orange')
+
+      // just prints out red, blue, green
+      // alert(colors);
+
+      // target just the second value
+      // alert(colors[1]);
+
+      // add another value to the Array by indexing into in
+      colors[3] = 'purpp';
+
+      // to push a a value to the end of an Array
+      // we are calling a function using dot notiation
+      colors.push('ennnd');
+      // alert(colors);
+
+      // can also create an an array of numbers
+      var numbers = [3,4,5,2];
+
+      // length propery
+      // alert(numbers.length);
+      // id we have a method or function we need parenthesis at the ennnd
+      //alert(numbers.sort())
+
+
+      // FOR LOOPS
+        for(var i = 0; i <=  10; i ++){
+        //inside here goes what we want to happen after each itteration
+        //we will do a console log which is a way to print stuff out
+          //console.log(i);
+      }
+
+      // WHILE LOOPS
+      var i = 0
+      while(i < 10){
+        //console.log(i);
+        i++
+      }
+
+      // FOR EACH LOOPS
+      var numbers = [23,434,5343,343,323];
+      // if you wanted numbers in reverse then
+      // numbers.reverse();
+
+      numbers.forEach(
+        function(number){
+        //console.log(number);
+      });
+
+      // Another way to write the same thing with a for LOOPS
+      for(var i = 0; i < numbers.length; i ++){
+        //console.log(numbers[i]);
+      }
+
+      // CONDITIONALS
+      // with three equal signs, it does the same thing as two but it makes sure that they are same data types
+      var var1 = 4;
+      var var2 = 4;
+      if(var1 == var2){
+        //console.log('This is a true statement')
+      } else{
+        //console.log('You have reached the else if above was false')
+      }
+      // does not equal you use !=
+      // the and operator can be used with &&
+
+      // Switch statment and casses
+        var fruit = 'apple'
+
+      // we run the different casses depedent upon what fruit is equal too
+
+      switch(fruit){
+        case 'bannana':
+          alert('I hate bannanas');
+          break;
+        case 'apple':
+          alert('I love apples');
+          break;
+        case 'orange':
+          alert('Oranges are ok');
+          break;
+        default:
+          alert('I love all other fruits');
+          break;
+      }
+
+      // OBJECTS
+
+      //object literal
+      var person = {
+        firstName: 'Brad',
+        lastName: 'Pitt',
+        age: 34,
+        children: ['Tom', 'Nick'],
+        //can also have imbeded objects
+        address: {
+          street: '555 something',
+          city: 'brampton',
+          province: 'ON',
+        },
+        // can also add fnctions in
+        fullName: function(){
+          return this.firstName // this refers to the current object that it is in, which is person
+        }
+      }
+
+      // now say we want to accsess the first name
+      //console.log(person.firstName);
+      // or say the second children
+      //console.log(person.children[1]);
+      // or say loop through them
+      for(i = 0; i < person.children.length; i++){
+        //console.log(person.children[i])
+      }
+
+      // OBJECT CONSTRUCTIOR (another way to create a single object)
+      var apple = new Object();
+      apple.color = 'red';
+      apple.shape = 'round';
+      // now this object has properties
+      apple.describe = function(){
+        return 'an apple has the color' + ' ' + this.color;
+      }
+      //console.log(apple.describe());
+
+      // Constructor Pattern (an easier way)
+      function Fruit(name, color, shape){
+        this.name = name;
+        this.color = color;
+        this.shape = shape;
+
+        this.describe = function(){
+          return 'A ' +this.name+' is the color '+this.color;
+        }
+      }
+
+      var melon = new Fruit('melon','green','round');
+
+      console.log(melon.describe());
+
+      // ARRAYS OF objects
+      var users = [
+        {
+          name: 'Bobby',
+          age: 23
+
+        },
+        {
+          name: 'Smith',
+          age: 24
+
+        },
+        {
+          name: 'Tommy',
+          age: 33
+
+        },
+      ]
+
+      // EVENTS
+      function doClick(){
+        alert('You clicked');
+      }
+
+      function changeText(id){
+        id.innerHTML = 'you clicked';
+      }
+
+      // need to use a dom function called get element by id
+
+      function changeTitle(){
+        var heading = document.getElementById('heading');
+        heading.innerHTML = 'change the title';
+      }
+
+      function dateFunc(){
+        var grabdate = document.getElementById('time');
+        grabdate.innerHTML = Date();
+      }
+
+      // FORMS
+
+      function changeBackground(x){
+        var heading  = document.getElementById('body');
+        heading_1.style.color = x.value
+      }
+
+      // we want first name to be a required field
+      function validateForm(){
+        var firstName = document.forms['myForm']['firstName'].value;
+
+        if(firstName == null || firstName == ""){
+          alert('First name is required');
+          return false;
+        }
+      }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
